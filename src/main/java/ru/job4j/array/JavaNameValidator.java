@@ -5,16 +5,16 @@ public class JavaNameValidator {
         boolean valid = true;
         if (name.isEmpty() || isLowerLatinLetter(name.codePointAt(0))) {
             valid = false;
-            } else {
-            char[] array = name.toCharArray();
-            for (int i = 0; i < array.length; i++) {
-                if (!isSpecialSymbol(array[i]) && !isUpperLatinLetter(array[i]) && !isLowerLatinLetter(array[i]) && !Character.isDigit(array[i])) {
-                    valid = false;
+        }
+        char[] array = name.toCharArray();
+        for (int i = 1; i < array.length; i++) {
+            if (!isSpecialSymbol(array[i]) && !isUpperLatinLetter(array[i]) && !isLowerLatinLetter(array[i]) && !Character.isDigit(array[i])) {
+                valid = false;
+                break;
                 }
             }
-        }
-            return valid;
-        }
+        return valid;
+    }
 
     public static boolean isSpecialSymbol(int code) {
         return code == 36 || code == 95;
